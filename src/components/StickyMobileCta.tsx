@@ -1,0 +1,36 @@
+import { useEffect, useState } from 'react'
+
+export function StickyMobileCta() {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    function onScroll() {
+      const form = document.getElementById('lead-form')
+      if (!form) return
+      const formTop = form.getBoundingClientRect().top
+      const pastHero = window.scrollY > 420
+      const formInView = formTop < window.innerHeight * 0.85
+      setVisible(pastHero && !formInView)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
+
+  if (!visible) return null
+
+  return (
+    <div className="sticky-cta-bar fixed inset-x-0 bottom-0 z-40 border-t border-navy/8 bg-white/95 p-3 backdrop-blur-md md:hidden">
+      <a
+        href="#lead-form"
+        className="btn-primary btn-teal flex min-h-12 w-full items-center justify-center rounded-xl bg-teal text-[15px] font-bold text-white hover:bg-teal-bright"
+      >
+        קבלו דוח אבחון למייל
+      </a>
+    </div>
+  )
+}
