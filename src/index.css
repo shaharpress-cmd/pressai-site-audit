@@ -109,6 +109,24 @@ canvas {
   40% { box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.28); }
 }
 
+/* Important CTA: one soft glow + gentle shimmer (age-friendly, not gimmicky) */
+@keyframes cta-glow-once {
+  0%, 100% {
+    box-shadow: 0 8px 24px -8px rgba(11, 31, 58, 0.45);
+  }
+  45% {
+    box-shadow:
+      0 10px 30px -8px rgba(13, 148, 136, 0.5),
+      0 0 0 5px rgba(13, 148, 136, 0.14);
+  }
+}
+
+@keyframes cta-shimmer-once {
+  0% { transform: translateX(-120%); opacity: 0; }
+  15% { opacity: 0.55; }
+  100% { transform: translateX(120%); opacity: 0; }
+}
+
 .animate-fade-up {
   animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -203,12 +221,13 @@ canvas {
 }
 .btn-primary:hover,
 .btn-press:hover {
-  transform: scale(1.045);
-  box-shadow: 0 14px 32px -8px rgba(11, 31, 58, 0.52);
+  transform: scale(1.055);
+  box-shadow: 0 16px 36px -10px rgba(11, 31, 58, 0.55);
 }
 .btn-primary:active,
 .btn-press:active {
-  transform: scale(0.94);
+  transform: scale(0.93);
+  box-shadow: 0 4px 14px -6px rgba(11, 31, 58, 0.4);
 }
 .btn-primary:focus-visible,
 .btn-press:focus-visible {
@@ -220,7 +239,27 @@ canvas {
   box-shadow: 0 8px 24px -8px rgba(13, 148, 136, 0.5);
 }
 .btn-teal:hover {
-  box-shadow: 0 12px 28px -8px rgba(13, 148, 136, 0.55);
+  box-shadow: 0 16px 36px -10px rgba(13, 148, 136, 0.58);
+}
+
+/* Spotlight CTAs: soft one-shot glow + shimmer */
+.btn-primary.cta-spotlight {
+  animation: cta-glow-once 2.6s ease-out 0.5s 1;
+}
+.btn-primary.cta-spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 45%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.28) 48%,
+    transparent 100%
+  );
+  animation: cta-shimmer-once 1.8s ease-in-out 1.1s 1;
+  pointer-events: none;
+  border-radius: inherit;
 }
 
 .score-bar {
@@ -317,7 +356,9 @@ canvas {
   .btn-primary:hover,
   .btn-primary:active,
   .btn-press:hover,
-  .btn-press:active { transform: none; }
+  .btn-press:active { transform: none; box-shadow: inherit; }
+  .btn-primary.cta-spotlight { animation: none; }
+  .btn-primary.cta-spotlight::after { animation: none; content: none; }
   .score-bar { transition: none; }
   .site-assistant-fab { animation: none; }
   #report.report-highlight .mx-auto.max-w-4xl,
@@ -338,18 +379,25 @@ canvas {
   }
 }
 
-/* Floating accessibility — bottom-left stack above site assistant */
+/* Floating accessibility — compact icon-only launcher (IS 5568 / WCAG 44×44 touch) */
 .accessibility-dock {
   left: max(0.75rem, env(safe-area-inset-left, 0px));
   right: auto;
-  bottom: max(10.25rem, calc(9.25rem + env(safe-area-inset-bottom, 0px)));
+  bottom: max(10rem, calc(9rem + env(safe-area-inset-bottom, 0px)));
 }
 @media (min-width: 768px) {
   .accessibility-dock {
-    bottom: max(5.5rem, calc(4.75rem + env(safe-area-inset-bottom, 0px)));
+    bottom: max(5.25rem, calc(4.5rem + env(safe-area-inset-bottom, 0px)));
   }
 }
 
+.accessibility-launcher {
+  /* Visual ~40–44px; box is 44×44 (h-11/w-11) for legal touch minimum */
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0;
+  flex-shrink: 0;
+}
 .accessibility-launcher:focus-visible {
   outline: 2px solid var(--color-teal);
   outline-offset: 2px;
@@ -424,8 +472,13 @@ html.a11y-reduce-motion .animate-fade-up,
 html.a11y-reduce-motion .reveal,
 html.a11y-reduce-motion .hero-orb,
 html.a11y-reduce-motion .dot-live,
-html.a11y-reduce-motion .site-assistant-fab {
+html.a11y-reduce-motion .site-assistant-fab,
+html.a11y-reduce-motion .btn-primary.cta-spotlight {
   animation: none !important;
+}
+html.a11y-reduce-motion .btn-primary.cta-spotlight::after {
+  animation: none !important;
+  content: none !important;
 }
 html.a11y-reduce-motion .reveal {
   opacity: 1 !important;

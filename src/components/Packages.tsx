@@ -96,7 +96,7 @@ export function Packages() {
               </ul>
               <a
                 href="#lead-form"
-                className={`btn-primary btn-press mt-7 flex min-h-12 items-center justify-center rounded-xl px-3 py-3.5 text-center text-[13px] font-semibold leading-snug focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal sm:text-[14px] ${
+                className={`btn-primary btn-press cta-spotlight mt-7 flex min-h-12 items-center justify-center rounded-xl px-3 py-3.5 text-center text-[13px] font-semibold leading-snug focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal sm:text-[14px] ${
                   p.featured
                     ? 'btn-teal bg-teal text-white hover:bg-teal-bright'
                     : 'bg-navy text-white hover:bg-navy-soft'
@@ -117,7 +117,7 @@ export function Packages() {
           </div>
           <a
             href="#lead-form"
-            className="btn-primary btn-press inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-navy px-6 py-3 text-[14px] font-semibold text-white hover:bg-navy-soft"
+            className="btn-primary btn-press cta-spotlight inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-navy px-6 py-3 text-[14px] font-semibold text-white hover:bg-navy-soft"
           >
             התחילו בדוח
           </a>

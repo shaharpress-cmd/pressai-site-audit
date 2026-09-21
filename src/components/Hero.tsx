@@ -71,7 +71,7 @@ export function Hero({ onUrlSubmit }: Props) {
               </div>
               <button
                 type="submit"
-                className="btn-primary btn-press inline-flex min-h-12 w-full shrink-0 items-center justify-center rounded-xl bg-navy px-4 text-[14px] font-semibold text-white hover:bg-navy-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal sm:w-auto sm:px-7 sm:text-[15px]"
+                className="btn-primary btn-press cta-spotlight inline-flex min-h-12 w-full shrink-0 items-center justify-center rounded-xl bg-navy px-4 text-[14px] font-semibold text-white hover:bg-navy-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal sm:w-auto sm:px-7 sm:text-[15px]"
               >
                 קבלו דוח בדיקה
               </button>

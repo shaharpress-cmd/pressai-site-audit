@@ -71,8 +71,8 @@ function AccessibilityIcon({ className = '' }: { className?: string }) {
     <svg
       className={className}
       xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
+      width="22"
+      height="22"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -243,19 +243,25 @@ export function AccessibilityLauncher() {
 
       <button
         type="button"
-        className="accessibility-launcher btn-press pointer-events-auto inline-flex min-h-12 items-center gap-2 rounded-full border border-navy/10 bg-white/95 px-3.5 py-2.5 text-navy shadow-[0_12px_32px_-12px_rgba(11,31,58,0.45)] backdrop-blur-md ring-1 ring-navy/5 transition hover:border-teal/30 hover:text-teal"
+        className="accessibility-launcher btn-press pointer-events-auto relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-navy/10 bg-white/95 text-navy shadow-[0_10px_28px_-12px_rgba(11,31,58,0.45)] backdrop-blur-md ring-1 ring-navy/5 transition hover:border-teal/30 hover:text-teal"
         aria-expanded={open}
         aria-controls={panelId}
         aria-haspopup="dialog"
         aria-label={open ? 'סגירת כלי נגישות' : 'פתיחת כלי נגישות'}
+        title={open ? 'סגירת כלי נגישות' : 'פתיחת כלי נגישות'}
         onClick={() => setOpen((v) => !v)}
       >
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-teal/12 text-teal">
+        <span
+          className="flex h-9 w-9 items-center justify-center rounded-full bg-teal/12 text-teal"
+          aria-hidden
+        >
           <AccessibilityIcon />
         </span>
-        <span className="pe-0.5 text-[13px] font-bold">נגישות</span>
         {anyOn && (
-          <span className="h-2 w-2 rounded-full bg-teal" aria-hidden title="התאמות פעילות" />
+          <span
+            className="absolute end-0 top-0 h-2.5 w-2.5 rounded-full border-2 border-white bg-teal"
+            aria-hidden
+          />
         )}
       </button>
     </div>
