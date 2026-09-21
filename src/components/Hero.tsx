@@ -1,5 +1,4 @@
 import { useState, type FormEvent } from 'react'
-import { ExplainerVideo } from './ExplainerVideo'
 
 type Props = {
   onUrlSubmit: (url: string) => void
@@ -26,8 +25,6 @@ export function Hero({ onUrlSubmit }: Props) {
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <ExplainerVideo />
-
           <p className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-teal/25 bg-white/70 px-3.5 py-1.5 text-[12px] font-semibold text-teal shadow-sm backdrop-blur-sm">
             <span className="dot-live h-1.5 w-1.5 rounded-full bg-teal" aria-hidden />
             דוח בדיקת אתר · SEO + UX · לא כלי AI
