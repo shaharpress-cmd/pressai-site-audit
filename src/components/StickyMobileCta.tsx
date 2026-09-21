@@ -24,10 +24,10 @@ export function StickyMobileCta() {
   if (!visible) return null
 
   return (
-    <div className="sticky-cta-bar fixed inset-x-0 bottom-0 z-40 border-t border-navy/8 bg-white/95 px-4 pb-3 pt-3 backdrop-blur-md md:hidden">
+    <div className="sticky-cta-bar fixed inset-x-0 bottom-0 z-40 max-w-full border-t border-navy/8 bg-white/95 px-4 pb-3 pt-3 backdrop-blur-md md:hidden">
       <a
         href="#lead-form"
-        className="btn-primary btn-teal flex min-h-12 w-full items-center justify-center rounded-xl bg-teal px-3 text-[15px] font-bold text-white hover:bg-teal-bright"
+        className="btn-primary btn-teal flex min-h-12 w-full items-center justify-center rounded-xl bg-teal px-3 text-center text-[14px] font-bold leading-snug text-white hover:bg-teal-bright sm:text-[15px]"
       >
         קבלו דוח אבחון למייל
       </a>

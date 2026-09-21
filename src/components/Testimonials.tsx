@@ -1,3 +1,4 @@
+import { Reveal } from './Reveal'
 const quotes = [
   {
     quote: 'קיבלנו דוח ברור — לא רשימת באגים, אלא מה באמת פוגע בפניות. אחר כך יישמו את מה שסוכם.',
@@ -34,7 +35,7 @@ export function Testimonials() {
 
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
           {quotes.map((q) => (
-            <figure
+            <Reveal as="article"
               key={q.role}
               className="card-lift relative flex flex-col rounded-2xl border border-navy/6 bg-white p-5 shadow-sm sm:p-6"
             >
@@ -58,7 +59,7 @@ export function Testimonials() {
                   </div>
                 </div>
               </figcaption>
-            </figure>
+            </Reveal>
           ))}
         </div>
       </div>

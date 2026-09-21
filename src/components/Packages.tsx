@@ -1,3 +1,4 @@
+import { Reveal } from './Reveal'
 const packages = [
   {
     id: 'seo',
@@ -45,7 +46,7 @@ const packages = [
 
 export function Packages() {
   return (
-    <section id="packages" className="scroll-mt-20 bg-cream py-16 sm:py-20">
+    <section id="packages" className="scroll-mt-20 overflow-x-clip bg-cream py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <p className="section-label text-gold">אחרי הדוח</p>
@@ -58,11 +59,11 @@ export function Packages() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-3 lg:items-stretch">
+        <Reveal className="mt-12 grid gap-5 lg:grid-cols-3 lg:items-stretch">
           {packages.map((p) => (
             <article
               key={p.id}
-              className={`card-lift relative flex min-w-0 flex-col overflow-visible rounded-2xl border bg-white p-5 sm:p-7 ${
+              className={`card-lift relative flex min-w-0 flex-col overflow-hidden rounded-2xl border bg-white p-5 pt-7 sm:p-7 sm:pt-8 ${
                 p.featured
                   ? 'border-teal/40 shadow-[0_24px_56px_-20px_rgba(13,148,136,0.4)] lg:-translate-y-3'
                   : 'border-navy/8 shadow-sm'
@@ -92,7 +93,7 @@ export function Packages() {
               </ul>
               <a
                 href="#lead-form"
-                className={`btn-primary mt-7 flex min-h-12 items-center justify-center rounded-xl px-3 py-3.5 text-center text-[14px] font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal ${
+                className={`btn-primary mt-7 flex min-h-12 items-center justify-center rounded-xl px-3 py-3.5 text-center text-[13px] font-semibold leading-snug focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal sm:text-[14px] ${
                   p.featured
                     ? 'btn-teal bg-teal text-white hover:bg-teal-bright'
                     : 'bg-navy text-white hover:bg-navy-soft'
@@ -102,7 +103,7 @@ export function Packages() {
               </a>
             </article>
           ))}
-        </div>
+        </Reveal>
 
         <div className="glass mt-10 flex flex-col items-center justify-between gap-4 rounded-2xl px-5 py-6 shadow-sm sm:flex-row sm:px-8">
           <div>

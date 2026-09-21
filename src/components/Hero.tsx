@@ -18,9 +18,9 @@ export function Hero({ onUrlSubmit }: Props) {
   }
 
   return (
-    <section id="top" className="hero-glow relative overflow-hidden pb-20 pt-14 sm:pb-24 sm:pt-20">
-      <div className="hero-orb -start-20 top-10 h-64 w-64 bg-teal/20" aria-hidden />
-      <div className="hero-orb end-0 top-32 h-72 w-72 bg-gold/15" style={{ animationDelay: '2s' }} aria-hidden />
+    <section id="top" className="hero-glow relative overflow-x-clip overflow-hidden pb-20 pt-14 sm:pb-24 sm:pt-20">
+      <div className="hero-orb start-0 top-10 h-56 w-56 -translate-x-1/4 bg-teal/20 sm:h-64 sm:w-64" aria-hidden />
+      <div className="hero-orb end-0 top-32 h-56 w-56 translate-x-1/4 bg-gold/15 sm:h-64 sm:w-64" style={{ animationDelay: '2s' }} aria-hidden />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px gold-line opacity-70" />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
@@ -71,7 +71,7 @@ export function Hero({ onUrlSubmit }: Props) {
               </div>
               <button
                 type="submit"
-                className="btn-primary inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-navy px-5 text-[15px] font-semibold text-white hover:bg-navy-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal sm:px-7"
+                className="btn-primary inline-flex min-h-12 w-full shrink-0 items-center justify-center rounded-xl bg-navy px-4 text-[14px] font-semibold text-white hover:bg-navy-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal sm:w-auto sm:px-7 sm:text-[15px]"
               >
                 קבלו דוח בדיקה
               </button>

@@ -1,3 +1,4 @@
+import { Reveal } from './Reveal'
 const steps = [
   {
     n: '01',
@@ -37,7 +38,7 @@ export function HowItWorks() {
 
         <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
-            <li
+            <Reveal as="li"
               key={s.n}
               className="card-lift relative rounded-2xl border border-navy/6 bg-white p-5 shadow-sm sm:p-6"
             >
@@ -50,7 +51,7 @@ export function HowItWorks() {
                   aria-hidden
                 />
               )}
-            </li>
+            </Reveal>
           ))}
         </ol>
       </div>

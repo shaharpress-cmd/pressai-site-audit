@@ -1,8 +1,9 @@
+import { Reveal } from './Reveal'
 export function Solution() {
   return (
     <section id="solution" className="scroll-mt-20 overflow-x-clip py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <Reveal className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
             <p className="section-label text-teal">המוצר</p>
             <h2 className="mt-3 text-2xl font-extrabold text-navy sm:text-3xl">
@@ -76,7 +77,7 @@ export function Solution() {
               </p>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

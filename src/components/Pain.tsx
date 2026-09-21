@@ -1,3 +1,4 @@
+import { Reveal } from './Reveal'
 const pains = [
   {
     title: 'לא יודעים איפה האתר עומד',
@@ -38,7 +39,7 @@ export function Pain() {
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {pains.map((p) => (
-            <article
+            <Reveal as="article"
               key={p.title}
               className="card-lift rounded-2xl border border-navy/6 bg-white p-5 shadow-sm sm:p-6"
             >
@@ -50,7 +51,7 @@ export function Pain() {
               </div>
               <h3 className="mt-4 text-[16px] font-bold text-navy">{p.title}</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-slate-muted">{p.body}</p>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>

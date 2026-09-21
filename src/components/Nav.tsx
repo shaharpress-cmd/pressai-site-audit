@@ -45,8 +45,8 @@ export function Nav() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-navy/5 bg-white/80 backdrop-blur-lg">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-4 sm:gap-3 sm:px-6">
+    <header className="sticky top-0 z-50 max-w-full overflow-x-clip border-b border-navy/5 bg-white/80 backdrop-blur-lg">
+      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-2 px-[max(1rem,env(safe-area-inset-left))] pe-[max(1rem,env(safe-area-inset-right))] sm:gap-3 sm:px-6">
         <div className="min-w-0 shrink">
           <Logo />
         </div>
@@ -87,7 +87,7 @@ export function Nav() {
           {/* Primary service — visible on tablet/mobile when desktop nav hidden */}
           <a
             href={PRIMARY.href}
-            className="inline-flex min-h-11 max-w-[9.5rem] items-center truncate rounded-full bg-teal/12 px-2.5 py-2 text-[12px] font-bold text-teal ring-1 ring-teal/25 transition hover:bg-teal/18 sm:max-w-none sm:px-3.5 sm:text-[13px] lg:hidden"
+            className="inline-flex min-h-11 max-w-[7.5rem] items-center truncate rounded-full bg-teal/12 px-2 py-2 text-[11px] font-bold text-teal ring-1 ring-teal/25 transition hover:bg-teal/18 min-[380px]:max-w-[9.5rem] min-[380px]:px-2.5 min-[380px]:text-[12px] sm:max-w-none sm:px-3.5 sm:text-[13px] lg:hidden"
           >
             <span className="sm:hidden">{PRIMARY.short}</span>
             <span className="hidden sm:inline">{PRIMARY.label}</span>
@@ -104,7 +104,7 @@ export function Nav() {
             href={WA}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-[#25D366] px-2.5 py-2 text-[13px] font-semibold text-white shadow-sm transition hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal sm:px-3.5"
+            className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 rounded-full bg-[#25D366] px-2.5 py-2 text-[13px] font-semibold text-white shadow-sm transition hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal sm:px-3.5"
             aria-label="פתחו שיחת WhatsApp"
           >
             <WhatsAppIcon />
