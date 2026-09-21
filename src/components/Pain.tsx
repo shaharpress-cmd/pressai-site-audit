@@ -1,4 +1,5 @@
 import { Reveal } from './Reveal'
+
 const pains = [
   {
     title: 'לא יודעים איפה האתר עומד',
@@ -37,9 +38,31 @@ export function Pain() {
           </p>
         </div>
 
+        <Reveal className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-2xl border border-navy/8 bg-white shadow-[0_20px_50px_-24px_rgba(11,31,58,0.25)]">
+          <figure className="m-0">
+            <img
+              src={`${import.meta.env.BASE_URL}customers-flee.png`}
+              alt="איור: לקוחות בורחים מהאתר שלכם אל המתחרה — כסף ופניות נשארים על השולחן"
+              className="block h-auto w-full"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption className="border-t border-navy/6 bg-gradient-to-l from-rose-50/90 to-cream px-4 py-4 text-center sm:px-6 sm:py-5">
+              <p className="text-[15px] font-bold text-navy sm:text-base">
+                הלקוחות לא «נעלמים» — הם עוברים למתחרה
+              </p>
+              <p className="mx-auto mt-1.5 max-w-2xl text-[13px] leading-relaxed text-slate-muted sm:text-[14px]">
+                אתר איטי, מבלבל או חלש בגוגל משאיר כסף על השולחן. דוח הבדיקה מראה איפה זה קורה —
+                לפני שממשיכים לאבד פניות.
+              </p>
+            </figcaption>
+          </figure>
+        </Reveal>
+
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {pains.map((p) => (
-            <Reveal as="article"
+            <Reveal
+              as="article"
               key={p.title}
               className="card-lift rounded-2xl border border-navy/6 bg-white p-5 shadow-sm sm:p-6"
             >

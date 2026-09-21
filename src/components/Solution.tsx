@@ -33,7 +33,7 @@ export function Solution() {
             </ul>
             <a
               href="#lead-form"
-              className="btn-primary btn-teal mt-8 inline-flex min-h-12 items-center rounded-xl bg-teal px-6 py-3 text-[14px] font-semibold text-white hover:bg-teal-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+              className="btn-primary btn-press btn-teal mt-8 inline-flex min-h-12 items-center rounded-xl bg-teal px-6 py-3 text-[14px] font-semibold text-white hover:bg-teal-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
             >
               התחילו בדוח בדיקה
             </a>

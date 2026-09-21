@@ -339,7 +339,7 @@ export function LeadForm({ initialUrl = '' }: Props) {
           <button
             type="submit"
             disabled={submitting}
-            className="btn-primary btn-teal flex min-h-12 w-full items-center justify-center rounded-xl bg-teal py-3.5 text-[15px] font-bold text-white hover:bg-teal-bright disabled:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+            className="btn-primary btn-press btn-teal flex min-h-12 w-full items-center justify-center rounded-xl bg-teal py-3.5 text-[15px] font-bold text-white hover:bg-teal-bright disabled:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
           >
             {submitting ? 'שולח…' : 'שלחו בקשה לדוח אבחון'}
           </button>

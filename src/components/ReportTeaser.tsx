@@ -8,25 +8,65 @@ const defaultScores = [
   { label: 'אמון / בהירות', value: 5.5, color: 'bg-orange-400' },
 ]
 
-const defaultGaps = [
-  { label: 'האתר שלכם', pct: 42, tone: 'bg-rose-400' },
-  { label: 'מתחרה א׳', pct: 78, tone: 'bg-teal' },
-  { label: 'מתחרה ב׳', pct: 71, tone: 'bg-teal/70' },
-  { label: 'מתחרה ג׳', pct: 65, tone: 'bg-teal/50' },
-]
+const gapSets = {
+  seo: [
+    { label: 'האתר שלכם', pct: 38, tone: 'bg-rose-400' },
+    { label: 'מתחרה א׳', pct: 82, tone: 'bg-teal' },
+    { label: 'מתחרה ב׳', pct: 74, tone: 'bg-teal/70' },
+    { label: 'מתחרה ג׳', pct: 68, tone: 'bg-teal/50' },
+  ],
+  ux: [
+    { label: 'האתר שלכם', pct: 45, tone: 'bg-rose-400' },
+    { label: 'מתחרה א׳', pct: 79, tone: 'bg-amber-400' },
+    { label: 'מתחרה ב׳', pct: 72, tone: 'bg-amber-400/80' },
+    { label: 'מתחרה ג׳', pct: 66, tone: 'bg-amber-400/60' },
+  ],
+} as const
+
+type GapMode = keyof typeof gapSets
 
 type Props = {
   verticalId?: string | null
 }
 
+function useCountUp(target: number, active: boolean, duration = 1200) {
+  const [value, setValue] = useState(0)
+  useEffect(() => {
+    if (!active) {
+      setValue(0)
+      return
+    }
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduce) {
+      setValue(target)
+      return
+    }
+    let raf = 0
+    const start = performance.now()
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / duration)
+      const eased = 1 - Math.pow(1 - t, 3)
+      setValue(Math.round(target * eased))
+      if (t < 1) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [active, target, duration])
+  return value
+}
+
 export function ReportTeaser({ verticalId = null }: Props) {
   const [animated, setAnimated] = useState(false)
+  const [gapMode, setGapMode] = useState<GapMode>('seo')
   const sectionRef = useRef<HTMLElement>(null)
 
   const industry = verticalId ? industries.find((i) => i.id === verticalId) : undefined
   const scores = industry?.scores ?? defaultScores
   const overall = industry?.overall ?? 4.7
   const verticalLabel = industry?.label ?? null
+  const gaps = gapSets[gapMode]
+  const lossExample = gapMode === 'seo' ? 4200 : 3100
+  const lossShown = useCountUp(lossExample, animated, 1100)
 
   useEffect(() => {
     const el = sectionRef.current
@@ -49,13 +89,19 @@ export function ReportTeaser({ verticalId = null }: Props) {
     return () => io.disconnect()
   }, [])
 
-  // Re-trigger bar fill when vertical changes
   useEffect(() => {
     if (!verticalId) return
     setAnimated(false)
     const t = window.setTimeout(() => setAnimated(true), 40)
     return () => window.clearTimeout(t)
   }, [verticalId])
+
+  function switchGap(mode: GapMode) {
+    setGapMode(mode)
+    setAnimated(false)
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    window.setTimeout(() => setAnimated(true), reduce ? 0 : 40)
+  }
 
   return (
     <section
@@ -129,15 +175,47 @@ export function ReportTeaser({ verticalId = null }: Props) {
           </div>
 
           <div className="min-w-0 border-b border-navy/5 p-4 sm:p-6">
-            <div className="flex flex-wrap items-end justify-between gap-2">
-              <h4 className="text-[14px] font-bold text-navy">פער נראות מול מתחרים (דוגמה)</h4>
+            <div className="flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <h4 className="text-[14px] font-bold text-navy">פער מול מתחרים (דוגמה)</h4>
+                <p className="mt-1 text-[12px] text-slate-muted">
+                  לחצו להחלפה בין פער SEO לפער UX — הגרפים מתעדכנים.
+                </p>
+              </div>
               <span className="rounded-full bg-navy/5 px-2.5 py-0.5 text-[10px] font-semibold text-slate-muted">
                 נתונים לדוגמה · לא האתר שלכם
               </span>
             </div>
-            <p className="mt-1 text-[12px] text-slate-muted">מדד יחסי 0–100 לפי סיגנלי נראות/המרה בדוח הבדיקה.</p>
-            <div className="mt-5 min-w-0 space-y-3">
-              {defaultGaps.map((row) => (
+
+            <div
+              className="mt-4 inline-flex rounded-xl border border-navy/10 bg-cream/80 p-1"
+              role="group"
+              aria-label="בחירת סוג פער"
+            >
+              {(
+                [
+                  { id: 'seo' as const, label: 'פער SEO / גוגל' },
+                  { id: 'ux' as const, label: 'פער UX / המרה' },
+                ] as const
+              ).map((opt) => (
+                <button
+                  key={opt.id}
+                  type="button"
+                  onClick={() => switchGap(opt.id)}
+                  aria-pressed={gapMode === opt.id}
+                  className={`btn-press min-h-11 rounded-lg px-3.5 text-[13px] font-semibold transition sm:px-4 ${
+                    gapMode === opt.id
+                      ? 'bg-navy text-white shadow-sm'
+                      : 'text-slate-muted hover:bg-white hover:text-navy'
+                  }`}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="mt-5 min-w-0 space-y-3" key={gapMode}>
+              {gaps.map((row) => (
                 <div key={row.label} className="min-w-0">
                   <div className="mb-1 flex justify-between gap-2 text-[12px]">
                     <span className="min-w-0 font-medium text-navy">{row.label}</span>
@@ -151,6 +229,30 @@ export function ReportTeaser({ verticalId = null }: Props) {
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-6 overflow-hidden rounded-2xl border border-rose-200/70 bg-gradient-to-l from-rose-50 to-orange-50/80 p-4 sm:p-5">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-wide text-rose-700/80">
+                    הפסד חודשי לדוגמה
+                  </p>
+                  <p className="mt-1 text-[13px] text-navy/75">
+                    {gapMode === 'seo'
+                      ? 'כשנראות בגוגל חלשה — פחות פניות נכנסות.'
+                      : 'כשהחוויה מבלבלת — מבקרים עוזבים בלי להשאיר פרטים.'}
+                  </p>
+                </div>
+                <div className="rounded-xl bg-white/90 px-4 py-3 text-center shadow-sm ring-1 ring-rose-200/60">
+                  <div className="text-2xl font-extrabold tabular-nums text-rose-600 sm:text-3xl">
+                    ₪{lossShown.toLocaleString('he-IL')}
+                  </div>
+                  <div className="mt-0.5 text-[10px] font-semibold text-slate-muted">לחודש · כדוגמה בלבד</div>
+                </div>
+              </div>
+              <p className="mt-3 text-[11px] leading-relaxed text-slate-muted">
+                המספר להמחשה בלבד — לא חישוב על האתר שלכם. בדוח האמיתי נסמן איפה הכסף דולף אצלכם.
+              </p>
             </div>
           </div>
 

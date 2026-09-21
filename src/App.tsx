@@ -11,6 +11,7 @@ import { Testimonials } from './components/Testimonials'
 import { LeadForm } from './components/LeadForm'
 import { Footer } from './components/Footer'
 import { StickyMobileCta } from './components/StickyMobileCta'
+import { SiteAssistant } from './components/SiteAssistant'
 import type { IndustrySample } from './lib/industries'
 
 export default function App() {
@@ -32,7 +33,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className="site-shell min-h-screen overflow-x-clip pb-20 md:pb-0">
+    <div className="site-shell min-h-screen overflow-x-clip pb-28 md:pb-0">
       <a
         href="#lead-form"
         className="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-teal focus:px-4 focus:py-2 focus:text-white"
@@ -53,6 +54,7 @@ export default function App() {
       </main>
       <Footer />
       <StickyMobileCta />
+      <SiteAssistant />
     </div>
   )
 }
