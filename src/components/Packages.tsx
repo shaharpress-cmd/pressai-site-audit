@@ -45,7 +45,7 @@ const packages = [
 
 export function Packages() {
   return (
-    <section id="packages" className="bg-cream py-16 sm:py-20">
+    <section id="packages" className="scroll-mt-20 bg-cream py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <p className="section-label text-gold">אחרי הדוח</p>
@@ -62,14 +62,14 @@ export function Packages() {
           {packages.map((p) => (
             <article
               key={p.id}
-              className={`card-lift relative flex flex-col rounded-2xl border bg-white p-6 sm:p-7 ${
+              className={`card-lift relative flex min-w-0 flex-col overflow-visible rounded-2xl border bg-white p-5 sm:p-7 ${
                 p.featured
                   ? 'border-teal/40 shadow-[0_24px_56px_-20px_rgba(13,148,136,0.4)] lg:-translate-y-3'
                   : 'border-navy/8 shadow-sm'
               }`}
             >
               {p.featured && (
-                <span className="absolute -top-3 start-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-gradient-to-l from-teal to-teal-bright px-3.5 py-1 text-[11px] font-bold text-white shadow-md">
+                <span className="absolute -top-3 left-1/2 max-w-[calc(100%-1.5rem)] -translate-x-1/2 truncate rounded-full bg-gradient-to-l from-teal to-teal-bright px-3 py-1 text-center text-[10px] font-bold text-white shadow-md sm:text-[11px] sm:px-3.5">
                   הכי מתאים לרוב העסקים
                 </span>
               )}
@@ -92,7 +92,7 @@ export function Packages() {
               </ul>
               <a
                 href="#lead-form"
-                className={`btn-primary mt-7 block rounded-xl py-3.5 text-center text-[14px] font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal ${
+                className={`btn-primary mt-7 flex min-h-12 items-center justify-center rounded-xl px-3 py-3.5 text-center text-[14px] font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal ${
                   p.featured
                     ? 'btn-teal bg-teal text-white hover:bg-teal-bright'
                     : 'bg-navy text-white hover:bg-navy-soft'
@@ -113,7 +113,7 @@ export function Packages() {
           </div>
           <a
             href="#lead-form"
-            className="btn-primary shrink-0 rounded-xl bg-navy px-6 py-3 text-[14px] font-semibold text-white hover:bg-navy-soft"
+            className="btn-primary inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-navy px-6 py-3 text-[14px] font-semibold text-white hover:bg-navy-soft"
           >
             התחילו בדוח
           </a>

@@ -1,6 +1,6 @@
 export function Solution() {
   return (
-    <section id="solution" className="py-16 sm:py-20">
+    <section id="solution" className="scroll-mt-20 overflow-x-clip py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
@@ -32,13 +32,13 @@ export function Solution() {
             </ul>
             <a
               href="#lead-form"
-              className="btn-primary btn-teal mt-8 inline-flex rounded-xl bg-teal px-6 py-3 text-[14px] font-semibold text-white hover:bg-teal-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+              className="btn-primary btn-teal mt-8 inline-flex min-h-12 items-center rounded-xl bg-teal px-6 py-3 text-[14px] font-semibold text-white hover:bg-teal-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
             >
               התחילו בדוח בדיקה
             </a>
           </div>
 
-          <div className="relative">
+          <div className="relative min-w-0 overflow-hidden">
             <div
               className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-teal/15 via-transparent to-gold/15 blur-2xl"
               aria-hidden

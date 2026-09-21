@@ -15,7 +15,7 @@ const placeholders = [
 
 export function TrustStrip() {
   return (
-    <section aria-label="סימני אמון" className="border-y border-navy/6 bg-white py-8 sm:py-10">
+    <section aria-label="סימני אמון" className="overflow-x-clip border-y border-navy/6 bg-white py-8 sm:py-10">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <p className="text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-muted/80">
           סימני אמון · לדוגמה

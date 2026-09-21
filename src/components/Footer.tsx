@@ -12,7 +12,7 @@ export function Footer() {
             </p>
             <a
               href="#lead-form"
-              className="mt-5 inline-flex rounded-xl bg-teal px-4 py-2.5 text-[13px] font-semibold text-white transition hover:bg-teal-bright"
+              className="mt-5 inline-flex min-h-11 items-center rounded-xl bg-teal px-4 py-2.5 text-[13px] font-semibold text-white transition hover:bg-teal-bright"
             >
               קבלו דוח אבחון
             </a>

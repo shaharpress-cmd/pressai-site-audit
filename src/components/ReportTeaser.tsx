@@ -8,7 +8,7 @@ const scores = [
 
 export function ReportTeaser() {
   return (
-    <section id="report" className="py-16 sm:py-20">
+    <section id="report" className="scroll-mt-20 py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <p className="section-label text-teal">תצוגת הדוח</p>
@@ -43,17 +43,17 @@ export function ReportTeaser() {
 
           <div className="grid grid-cols-2 gap-3 border-b border-navy/5 bg-cream/50 p-4 sm:grid-cols-4 sm:p-5">
             {scores.map((s) => (
-              <div key={s.label} className="rounded-xl border border-navy/6 bg-white p-3 text-center shadow-sm">
+              <div key={s.label} className="min-w-0 rounded-xl border border-navy/6 bg-white p-2.5 text-center shadow-sm sm:p-3">
                 <div className="text-xl font-extrabold text-navy">{s.value.toFixed(1)}</div>
-                <div className="mt-0.5 text-[11px] font-medium text-slate-muted">{s.label}</div>
-                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-navy/5">
-                  <div className={`score-bar h-full rounded-full ${s.color}`} style={{ width: `${s.value * 10}%` }} />
+                <div className="mt-0.5 text-[10px] font-medium leading-snug text-slate-muted sm:text-[11px]">{s.label}</div>
+                <div className="score-track mt-2 h-1.5 overflow-hidden rounded-full bg-navy/5">
+                  <div className={`score-bar h-full max-w-full rounded-full ${s.color}`} style={{ width: `${s.value * 10}%` }} />
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="border-b border-navy/5 p-4 sm:p-6">
+          <div className="min-w-0 border-b border-navy/5 p-4 sm:p-6">
             <div className="flex flex-wrap items-end justify-between gap-2">
               <h4 className="text-[14px] font-bold text-navy">פער נראות מול מתחרים (דוגמה)</h4>
               <span className="rounded-full bg-navy/5 px-2.5 py-0.5 text-[10px] font-semibold text-slate-muted">
@@ -61,20 +61,20 @@ export function ReportTeaser() {
               </span>
             </div>
             <p className="mt-1 text-[12px] text-slate-muted">מדד יחסי 0–100 לפי סיגנלי נראות/המרה בדוח הבדיקה.</p>
-            <div className="mt-5 space-y-3">
+            <div className="mt-5 min-w-0 space-y-3">
               {[
                 { label: 'האתר שלכם', pct: 42, tone: 'bg-rose-400' },
                 { label: 'מתחרה א׳', pct: 78, tone: 'bg-teal' },
                 { label: 'מתחרה ב׳', pct: 71, tone: 'bg-teal/70' },
                 { label: 'מתחרה ג׳', pct: 65, tone: 'bg-teal/50' },
               ].map((row) => (
-                <div key={row.label}>
-                  <div className="mb-1 flex justify-between text-[12px]">
-                    <span className="font-medium text-navy">{row.label}</span>
-                    <span className="font-bold text-navy tabular-nums">{row.pct}</span>
+                <div key={row.label} className="min-w-0">
+                  <div className="mb-1 flex justify-between gap-2 text-[12px]">
+                    <span className="min-w-0 font-medium text-navy">{row.label}</span>
+                    <span className="shrink-0 font-bold tabular-nums text-navy">{row.pct}</span>
                   </div>
-                  <div className="h-3 overflow-hidden rounded-full bg-navy/5">
-                    <div className={`h-full rounded-full ${row.tone}`} style={{ width: `${row.pct}%` }} />
+                  <div className="gap-track h-3 overflow-hidden rounded-full bg-navy/5">
+                    <div className={`h-full max-w-full rounded-full ${row.tone}`} style={{ width: `${row.pct}%` }} />
                   </div>
                 </div>
               ))}

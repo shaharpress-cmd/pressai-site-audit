@@ -123,7 +123,7 @@ export function LeadForm({ initialUrl = '' }: Props) {
   }
 
   function fieldClass(hasError?: string) {
-    return `w-full rounded-xl border bg-cream/90 px-4 py-3 text-[15px] text-navy placeholder:text-slate-muted/55 focus:outline-none focus:ring-2 focus:ring-teal/20 transition ${
+    return `min-h-12 w-full rounded-xl border bg-cream/90 px-4 py-3 text-[15px] text-navy placeholder:text-slate-muted/55 focus:outline-none focus:ring-2 focus:ring-teal/20 transition ${
       hasError ? 'border-rose-400 focus:border-rose-400' : 'border-navy/10 focus:border-teal'
     }`
   }
@@ -148,7 +148,7 @@ export function LeadForm({ initialUrl = '' }: Props) {
               href="https://wa.me/972538401100"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 text-[14px] font-semibold text-white transition hover:brightness-105"
+              className="mt-6 inline-flex min-h-12 items-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 text-[14px] font-semibold text-white transition hover:brightness-105"
             >
               שאלה דחופה? WhatsApp · 053-8401100
             </a>
@@ -316,7 +316,7 @@ export function LeadForm({ initialUrl = '' }: Props) {
                   setConsent(e.target.checked)
                   blurField('consent', e.target.checked)
                 }}
-                className="mt-1 h-4 w-4 rounded border-navy/20 text-teal focus:ring-teal"
+                className="mt-0.5 h-5 w-5 shrink-0 rounded border-navy/20 text-teal focus:ring-teal"
                 aria-invalid={!!show('consent')}
                 aria-describedby={show('consent') ? 'err-consent' : 'consent-hint'}
               />
@@ -339,7 +339,7 @@ export function LeadForm({ initialUrl = '' }: Props) {
           <button
             type="submit"
             disabled={submitting}
-            className="btn-primary btn-teal w-full rounded-xl bg-teal py-3.5 text-[15px] font-bold text-white hover:bg-teal-bright disabled:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+            className="btn-primary btn-teal flex min-h-12 w-full items-center justify-center rounded-xl bg-teal py-3.5 text-[15px] font-bold text-white hover:bg-teal-bright disabled:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
           >
             {submitting ? 'שולח…' : 'שלחו בקשה לדוח אבחון'}
           </button>

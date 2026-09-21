@@ -18,7 +18,7 @@ const quotes = [
 
 export function Testimonials() {
   return (
-    <section id="trust" className="bg-cream py-16 sm:py-20" aria-labelledby="testimonials-heading">
+    <section id="trust" className="scroll-mt-20 bg-cream py-16 sm:py-20" aria-labelledby="testimonials-heading">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <p className="section-label text-gold">אמון</p>

@@ -26,7 +26,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className="min-h-screen pb-16 md:pb-0">
+    <div className="min-h-screen overflow-x-clip pb-20 md:pb-0">
       <a
         href="#lead-form"
         className="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-teal focus:px-4 focus:py-2 focus:text-white"
@@ -34,7 +34,7 @@ export default function App() {
         דלגו לטופס דוח הבדיקה
       </a>
       <Nav />
-      <main>
+      <main className="min-w-0 overflow-x-clip">
         <Hero onUrlSubmit={handleHeroUrl} />
         <TrustStrip />
         <Pain />

@@ -16,6 +16,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+  scroll-padding-top: 5rem;
 }
 
 body {
@@ -24,6 +26,16 @@ body {
   color: var(--color-navy);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  max-width: 100%;
+  /* Long Hebrew / URLs wrap instead of forcing horizontal scroll */
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+#root {
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 ::selection {
@@ -156,6 +168,14 @@ body {
 
 .sticky-cta-bar {
   box-shadow: 0 -8px 32px -8px rgba(11, 31, 58, 0.18);
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
+}
+
+/* Chart / bar tracks stay inside their cards on narrow screens */
+.score-track,
+.gap-track {
+  max-width: 100%;
+  min-width: 0;
 }
 
 .trust-marquee {

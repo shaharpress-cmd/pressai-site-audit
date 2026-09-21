@@ -30,13 +30,13 @@ export function Hero({ onUrlSubmit }: Props) {
             דוח בדיקת אתר · SEO + UX · לא כלי AI
           </p>
 
-          <h1 className="animate-fade-up delay-1 mt-7 text-[2.05rem] font-extrabold leading-[1.18] tracking-tight text-navy sm:text-5xl sm:leading-[1.12]">
+          <h1 className="animate-fade-up delay-1 mt-7 text-[1.9rem] font-extrabold leading-[1.2] tracking-tight text-navy break-words sm:text-5xl sm:leading-[1.12]">
             דוח בדיקה לאתר —
             <br className="hidden sm:block" />
             <span className="text-teal">איפה אתם, מה מפסידים, ואיך המתחרים עוקפים</span>
           </h1>
 
-          <p className="animate-fade-up delay-2 mx-auto mt-5 max-w-2xl text-[15px] leading-relaxed text-slate-muted sm:text-lg">
+          <p className="animate-fade-up delay-2 mx-auto mt-5 max-w-2xl text-[15px] leading-relaxed text-slate-muted break-words sm:text-lg">
             הדביקו את כתובת האתר וקבלו דוח בדיקה מקצועי: מצב האתר, פער מול מתחרים,
             ונקודות שדולפות כסף ב־SEO ובחוויית משתמש. אחר כך — דוח עומק ותיקונים
             (SEO / UX / ביחד) כדי להמיר יותר.
@@ -71,7 +71,7 @@ export function Hero({ onUrlSubmit }: Props) {
               </div>
               <button
                 type="submit"
-                className="btn-primary min-h-12 shrink-0 rounded-xl bg-navy px-7 text-[15px] font-semibold text-white hover:bg-navy-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+                className="btn-primary inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-navy px-5 text-[15px] font-semibold text-white hover:bg-navy-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal sm:px-7"
               >
                 קבלו דוח בדיקה
               </button>

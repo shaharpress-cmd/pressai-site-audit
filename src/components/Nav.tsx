@@ -1,57 +1,183 @@
+import { useEffect, useId, useState } from 'react'
 import { Logo } from './Logo'
 
 const WA =
   'https://wa.me/972538401100?text=' +
   encodeURIComponent('שלום, אשמח לקבל דוח בדיקה לאתר שלי')
 
+const secondaryLinks = [
+  { href: '#pain', label: 'הבעיה' },
+  { href: '#solution', label: 'הפתרון' },
+  { href: '#how', label: 'איך זה עובד' },
+  { href: '#packages', label: 'חבילות' },
+  { href: '#trust', label: 'אמון' },
+]
+
+/** Primary central service — site-audit report funnel */
+const PRIMARY = {
+  href: '#report',
+  label: 'דוח בדיקת אתר',
+  short: 'דוח בדיקה',
+}
+
 export function Nav() {
+  const [open, setOpen] = useState(false)
+  const menuId = useId()
+
+  useEffect(() => {
+    if (!open) return
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [open])
+
+  function close() {
+    setOpen(false)
+  }
+
   return (
     <header className="sticky top-0 z-50 border-b border-navy/5 bg-white/80 backdrop-blur-lg">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <Logo />
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-4 sm:gap-3 sm:px-6">
+        <div className="min-w-0 shrink">
+          <Logo />
+        </div>
+
+        {/* Desktop nav — primary service centered/highlighted */}
         <nav
-          className="hidden items-center gap-6 text-[13px] font-medium text-slate-muted lg:flex"
+          className="hidden min-w-0 flex-1 items-center justify-center gap-1 xl:gap-2 lg:flex"
           aria-label="ניווט ראשי"
         >
-          <a href="#pain" className="transition hover:text-navy">
-            הבעיה
+          {secondaryLinks.slice(0, 2).map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="rounded-lg px-2.5 py-2 text-[13px] font-medium text-slate-muted transition hover:text-navy"
+            >
+              {l.label}
+            </a>
+          ))}
+          <a
+            href={PRIMARY.href}
+            className="mx-1 inline-flex min-h-11 items-center rounded-full bg-teal/12 px-3.5 py-2 text-[13px] font-bold text-teal ring-1 ring-teal/25 transition hover:bg-teal/18 hover:ring-teal/40"
+            aria-current="page"
+          >
+            {PRIMARY.label}
           </a>
-          <a href="#solution" className="transition hover:text-navy">
-            הפתרון
-          </a>
-          <a href="#how" className="transition hover:text-navy">
-            איך זה עובד
-          </a>
-          <a href="#report" className="transition hover:text-navy">
-            הדוח
-          </a>
-          <a href="#packages" className="transition hover:text-navy">
-            חבילות
-          </a>
-          <a href="#trust" className="transition hover:text-navy">
-            אמון
-          </a>
+          {secondaryLinks.slice(2).map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="rounded-lg px-2.5 py-2 text-[13px] font-medium text-slate-muted transition hover:text-navy"
+            >
+              {l.label}
+            </a>
+          ))}
         </nav>
-        <div className="flex items-center gap-2 sm:gap-3">
+
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+          {/* Primary service — visible on tablet/mobile when desktop nav hidden */}
+          <a
+            href={PRIMARY.href}
+            className="inline-flex min-h-11 max-w-[9.5rem] items-center truncate rounded-full bg-teal/12 px-2.5 py-2 text-[12px] font-bold text-teal ring-1 ring-teal/25 transition hover:bg-teal/18 sm:max-w-none sm:px-3.5 sm:text-[13px] lg:hidden"
+          >
+            <span className="sm:hidden">{PRIMARY.short}</span>
+            <span className="hidden sm:inline">{PRIMARY.label}</span>
+          </a>
+
           <a
             href="#lead-form"
-            className="hidden rounded-full border border-navy/10 bg-cream/80 px-3.5 py-2 text-[13px] font-semibold text-navy transition hover:border-teal/30 hover:text-teal sm:inline-flex"
+            className="hidden min-h-11 items-center rounded-full border border-navy/10 bg-cream/80 px-3.5 py-2 text-[13px] font-semibold text-navy transition hover:border-teal/30 hover:text-teal xl:inline-flex"
           >
-            דוח בדיקה
+            לטופס
           </a>
+
           <a
             href={WA}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full bg-[#25D366] px-3.5 py-2 text-[13px] font-semibold text-white shadow-sm transition hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-[#25D366] px-2.5 py-2 text-[13px] font-semibold text-white shadow-sm transition hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal sm:px-3.5"
             aria-label="פתחו שיחת WhatsApp"
           >
             <WhatsAppIcon />
-            <span>WhatsApp</span>
+            <span className="hidden min-[400px]:inline">WhatsApp</span>
           </a>
+
+          <button
+            type="button"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-navy/10 bg-white text-navy transition hover:border-teal/30 hover:text-teal lg:hidden"
+            aria-expanded={open}
+            aria-controls={menuId}
+            aria-label={open ? 'סגירת תפריט' : 'פתיחת תפריט'}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <CloseIcon /> : <MenuIcon />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile menu panel */}
+      {open && (
+        <div
+          id={menuId}
+          className="border-t border-navy/5 bg-white px-4 pb-4 pt-2 shadow-lg lg:hidden"
+          role="dialog"
+          aria-label="תפריט ניווט"
+        >
+          <nav className="mx-auto flex max-w-6xl flex-col gap-1" aria-label="ניווט מובייל">
+            <a
+              href={PRIMARY.href}
+              onClick={close}
+              className="flex min-h-11 items-center justify-between rounded-xl bg-teal/10 px-4 py-3 text-[15px] font-bold text-teal ring-1 ring-teal/20"
+            >
+              <span>{PRIMARY.label}</span>
+              <span className="text-[11px] font-semibold text-teal/70">שירות מרכזי</span>
+            </a>
+            {secondaryLinks.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={close}
+                className="flex min-h-11 items-center rounded-xl px-4 py-3 text-[15px] font-medium text-navy transition hover:bg-cream"
+              >
+                {l.label}
+              </a>
+            ))}
+            <a
+              href="#lead-form"
+              onClick={close}
+              className="mt-1 flex min-h-12 items-center justify-center rounded-xl bg-navy px-4 py-3 text-[15px] font-semibold text-white"
+            >
+              קבלו דוח בדיקה
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
+  )
+}
+
+function MenuIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function CloseIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
+    </svg>
   )
 }
 
