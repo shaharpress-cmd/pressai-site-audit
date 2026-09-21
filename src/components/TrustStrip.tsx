@@ -183,7 +183,7 @@ export function TrustStrip({ onSelectVertical }: Props) {
               <a
                 href="#lead-form"
                 onClick={() => setActive(null)}
-                className="btn-primary btn-teal flex min-h-12 w-full items-center justify-center rounded-xl bg-teal px-3 text-[14px] font-bold text-white hover:bg-teal-bright"
+                className="btn-primary btn-press btn-teal flex min-h-12 w-full items-center justify-center rounded-xl bg-teal px-3 text-[14px] font-bold text-white hover:bg-teal-bright"
               >
                 קבלו דוח בדיקה לאתר שלכם
               </a>

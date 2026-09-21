@@ -12,6 +12,7 @@ import { LeadForm } from './components/LeadForm'
 import { Footer } from './components/Footer'
 import { StickyMobileCta } from './components/StickyMobileCta'
 import { SiteAssistant } from './components/SiteAssistant'
+import { AccessibilityLauncher } from './components/AccessibilityLauncher'
 import type { IndustrySample } from './lib/industries'
 
 export default function App() {
@@ -55,6 +56,7 @@ export default function App() {
       <Footer />
       <StickyMobileCta />
       <SiteAssistant />
+      <AccessibilityLauncher />
     </div>
   )
 }

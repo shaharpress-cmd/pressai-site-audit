@@ -32,6 +32,14 @@ export function Footer() {
             <a href="mailto:hello@pressai.co.il" className="transition hover:text-teal-light">
               hello@pressai.co.il
             </a>
+            <a
+              href="https://pressai.co.il/legal/accessibility"
+              className="transition hover:text-teal-light"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              הצהרת נגישות
+            </a>
           </div>
         </div>
 

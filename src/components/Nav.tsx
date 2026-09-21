@@ -67,7 +67,7 @@ export function Nav() {
           ))}
           <a
             href={PRIMARY.href}
-            className="mx-1 inline-flex min-h-11 items-center rounded-full bg-teal/12 px-3.5 py-2 text-[13px] font-bold text-teal ring-1 ring-teal/25 transition hover:bg-teal/18 hover:ring-teal/40"
+            className="btn-press mx-1 inline-flex min-h-11 items-center rounded-full bg-teal/12 px-3.5 py-2 text-[13px] font-bold text-teal ring-1 ring-teal/25 transition hover:bg-teal/18 hover:ring-teal/40"
             aria-current="page"
           >
             {PRIMARY.label}
@@ -87,7 +87,7 @@ export function Nav() {
           {/* Primary service — visible on tablet/mobile when desktop nav hidden */}
           <a
             href={PRIMARY.href}
-            className="inline-flex min-h-11 max-w-[7.5rem] items-center truncate rounded-full bg-teal/12 px-2 py-2 text-[11px] font-bold text-teal ring-1 ring-teal/25 transition hover:bg-teal/18 min-[380px]:max-w-[9.5rem] min-[380px]:px-2.5 min-[380px]:text-[12px] sm:max-w-none sm:px-3.5 sm:text-[13px] lg:hidden"
+            className="btn-press inline-flex min-h-11 max-w-[7.5rem] items-center truncate rounded-full bg-teal/12 px-2 py-2 text-[11px] font-bold text-teal ring-1 ring-teal/25 transition hover:bg-teal/18 min-[380px]:max-w-[9.5rem] min-[380px]:px-2.5 min-[380px]:text-[12px] sm:max-w-none sm:px-3.5 sm:text-[13px] lg:hidden"
           >
             <span className="sm:hidden">{PRIMARY.short}</span>
             <span className="hidden sm:inline">{PRIMARY.label}</span>
@@ -95,7 +95,7 @@ export function Nav() {
 
           <a
             href="#lead-form"
-            className="hidden min-h-11 items-center rounded-full border border-navy/10 bg-cream/80 px-3.5 py-2 text-[13px] font-semibold text-navy transition hover:border-teal/30 hover:text-teal xl:inline-flex"
+            className="btn-press hidden min-h-11 items-center rounded-full border border-navy/10 bg-cream/80 px-3.5 py-2 text-[13px] font-semibold text-navy transition hover:border-teal/30 hover:text-teal xl:inline-flex"
           >
             לטופס
           </a>
@@ -104,7 +104,7 @@ export function Nav() {
             href={WA}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 rounded-full bg-[#25D366] px-2.5 py-2 text-[13px] font-semibold text-white shadow-sm transition hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal sm:px-3.5"
+            className="btn-press btn-primary inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 rounded-full bg-[#25D366] px-2.5 py-2 text-[13px] font-semibold text-white shadow-sm transition hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal sm:px-3.5"
             aria-label="פתחו שיחת WhatsApp"
           >
             <WhatsAppIcon />
@@ -154,7 +154,7 @@ export function Nav() {
             <a
               href="#lead-form"
               onClick={close}
-              className="mt-1 flex min-h-12 items-center justify-center rounded-xl bg-navy px-4 py-3 text-[15px] font-semibold text-white"
+              className="btn-primary btn-press mt-1 flex min-h-12 items-center justify-center rounded-xl bg-navy px-4 py-3 text-[15px] font-semibold text-white"
             >
               קבלו דוח בדיקה
             </a>
