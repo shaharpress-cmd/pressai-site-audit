@@ -4,6 +4,33 @@ type Props = {
   onUrlSubmit: (url: string) => void
 }
 
+const funnelSteps = [
+  {
+    value: '1',
+    label: 'דוח בדיקה',
+    body: 'תמונת מצב: SEO, UX ופער מול מתחרים',
+    href: '#report',
+    aria: 'לדוגמת דוח הבדיקה',
+    delayClass: 'delay-3',
+  },
+  {
+    value: '2',
+    label: 'דוח עומק',
+    body: 'מעמיקים בממצאים ומסמנים מה לתקן קודם',
+    href: '#how',
+    aria: 'איך עובד המשפך',
+    delayClass: 'delay-4',
+  },
+  {
+    value: '3',
+    label: 'תיקון / קידום',
+    body: 'SEO, UX או ביחד — ואפשר קידום חודשי',
+    href: '#packages',
+    aria: 'לחבילות תיקון וקידום',
+    delayClass: 'delay-5',
+  },
+] as const
+
 export function Hero({ onUrlSubmit }: Props) {
   const [url, setUrl] = useState('')
 
@@ -33,7 +60,11 @@ export function Hero({ onUrlSubmit }: Props) {
           <h1 className="animate-fade-up delay-1 mt-7 text-[1.9rem] font-extrabold leading-[1.2] tracking-tight text-navy break-words sm:text-5xl sm:leading-[1.12]">
             דוח בדיקה לאתר —
             <br className="hidden sm:block" />
-            <span className="text-teal">איפה אתם, מה מפסידים, ואיך המתחרים עוקפים</span>
+            <span className="text-teal">
+              איפה אתם, מה{' '}
+              <span className="loss-strike">מפסידים</span>
+              , ואיך המתחרים עוקפים
+            </span>
           </h1>
 
           <p className="animate-fade-up delay-2 mx-auto mt-5 max-w-2xl text-[15px] leading-relaxed text-slate-muted break-words sm:text-lg">
@@ -81,19 +112,23 @@ export function Hero({ onUrlSubmit }: Props) {
             </p>
           </form>
 
-          <div className="animate-fade-up delay-4 mt-14 grid grid-cols-3 gap-3 sm:gap-8">
-            {[
-              { value: '1', label: 'דוח בדיקה' },
-              { value: '2', label: 'דוח עומק' },
-              { value: '3', label: 'תיקון / קידום' },
-            ].map((s) => (
-              <div
+          <div className="mt-14 grid grid-cols-3 gap-2.5 sm:gap-6" role="navigation" aria-label="שלבי המשפך">
+            {funnelSteps.map((s) => (
+              <a
                 key={s.label}
-                className="rounded-2xl border border-navy/6 bg-white/60 px-2 py-4 shadow-sm backdrop-blur-sm sm:px-4"
+                href={s.href}
+                aria-label={s.aria}
+                className={`hero-step-card card-lift animate-fade-up group block rounded-2xl border border-navy/6 bg-white/70 px-2 py-4 text-center shadow-sm backdrop-blur-sm outline-none transition-colors focus-visible:border-teal focus-visible:ring-2 focus-visible:ring-teal/25 sm:px-4 sm:py-5 ${s.delayClass}`}
               >
-                <div className="text-2xl font-extrabold text-navy sm:text-3xl">{s.value}</div>
-                <div className="mt-1 text-[12px] font-medium text-slate-muted sm:text-[13px]">{s.label}</div>
-              </div>
+                <div className="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-teal/10 text-lg font-extrabold text-teal transition-colors group-hover:bg-teal group-hover:text-white sm:h-10 sm:w-10 sm:text-xl">
+                  {s.value}
+                </div>
+                <div className="mt-2.5 text-[12px] font-bold text-navy sm:text-[14px]">{s.label}</div>
+                <p className="mt-1.5 text-[11px] leading-snug text-slate-muted sm:text-[12px]">{s.body}</p>
+                <span className="mt-2 inline-block text-[11px] font-semibold text-teal opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 sm:text-[12px]" aria-hidden>
+                  המשך ↓
+                </span>
+              </a>
             ))}
           </div>
         </div>

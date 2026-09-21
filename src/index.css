@@ -341,6 +341,64 @@ canvas {
   animation: report-pulse 1.6s ease-out 1;
 }
 
+
+/* Hero: red underline that draws across «מפסידים» (RTL: origin at inline-end) */
+@keyframes loss-strike-draw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.loss-strike {
+  position: relative;
+  display: inline;
+  white-space: nowrap;
+}
+.loss-strike::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0.06em;
+  height: 0.13em;
+  background: #DC2626;
+  border-radius: 999px;
+  /* RTL: stretch from the start of the word (inline-end / right) */
+  transform-origin: right center; /* RTL Hebrew: draw from word start */
+  transform: scaleX(0);
+  animation: loss-strike-draw 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.85s forwards;
+  pointer-events: none;
+}
+
+/* Hero funnel step cards — interactive, not decorative */
+.hero-step-card {
+  text-decoration: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+.hero-step-card:hover {
+  border-color: rgba(13, 148, 136, 0.28);
+  background: rgba(255, 255, 255, 0.92);
+}
+.hero-step-card:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+/* How-it-works: subtle icon life (age-friendly) */
+@keyframes how-icon-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+.how-step-badge {
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.how-step:hover .how-step-badge {
+  background: color-mix(in srgb, var(--color-teal) 18%, white);
+  transform: translateY(-1px);
+}
+.how-step.is-visible .how-step-icon {
+  animation: how-icon-soft 3.2s ease-in-out 0.6s 2;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .animate-fade-up { animation: none; }
@@ -364,6 +422,13 @@ canvas {
   #report.report-highlight .mx-auto.max-w-4xl,
   #report.report-highlight .mx-auto.max-w-4xl { animation: none; }
   .industry-chip:active { transform: none; }
+  .loss-strike::after {
+    animation: none;
+    transform: scaleX(1);
+  }
+  .hero-step-card:active { transform: none; }
+  .how-step.is-visible .how-step-icon { animation: none; }
+  .how-step:hover .how-step-badge { transform: none; }
 }
 
 
@@ -497,4 +562,15 @@ html.a11y-reduce-motion .score-bar,
 html.a11y-reduce-motion .progress-fill,
 html.a11y-reduce-motion .card-lift {
   transition: none !important;
+}
+html.a11y-reduce-motion .loss-strike::after {
+  animation: none !important;
+  transform: scaleX(1) !important;
+}
+html.a11y-reduce-motion .how-step.is-visible .how-step-icon {
+  animation: none !important;
+}
+html.a11y-reduce-motion .how-step:hover .how-step-badge,
+html.a11y-reduce-motion .hero-step-card:active {
+  transform: none !important;
 }
